@@ -11,4 +11,12 @@ async function signUp(req: Request, res: Response) {
   res.sendStatus(httpStatus.CREATED);
 }
 
-export { signUp };
+async function signIn(req: Request, res: Response) {
+  const { email, password }: UserInsertData = req.body;
+
+  const token = await authService.login(email, password);
+
+  res.status(httpStatus.OK).send({ token });
+}
+
+export { signUp, signIn };
