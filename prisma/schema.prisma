@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -46,34 +43,31 @@ model Disciplines {
   id                  Int                   @id @default(autoincrement())
   name                String                @unique
   termId              Int
+  term                Terms                 @relation(fields: [termId], references: [id])
   TeachersDisciplines TeachersDisciplines[]
-
-  term Terms @relation(fields: [termId], references: [id])
 
   @@map("disciplines")
 }
 
 model TeachersDisciplines {
-  id           Int     @id @default(autoincrement())
+  id           Int         @id @default(autoincrement())
   teacherId    Int
   disciplineId Int
+  discipline   Disciplines @relation(fields: [disciplineId], references: [id])
+  teacher      Teachers    @relation(fields: [teacherId], references: [id])
   Tests        Tests[]
-
-  teacher    Teachers    @relation(fields: [teacherId], references: [id])
-  discipline Disciplines @relation(fields: [disciplineId], references: [id])
 
   @@map("teachersDisciplines")
 }
 
 model Tests {
-  id                  Int    @id @default(autoincrement())
+  id                  Int                 @id @default(autoincrement())
   name                String
   pdfUrl              String
   categoryId          Int
   teacherDisciplineId Int
-
-  category          Categories          @relation(fields: [categoryId], references: [id])
-  teacherDiscipline TeachersDisciplines @relation(fields: [teacherDisciplineId], references: [id])
+  category            Categories          @relation(fields: [categoryId], references: [id])
+  teacherDiscipline   TeachersDisciplines @relation(fields: [teacherDisciplineId], references: [id])
 
   @@map("tests")
 }
