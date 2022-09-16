@@ -6,7 +6,7 @@ async function insertTest(test: testRepository.TestInsertData) {
   await categoryService.findByIdOrFail(test.categoryId);
   await teachersDisciplinesService.findByIdOrFail(test.teacherDisciplineId);
 
-  await testRepository.create(test);
+  return await testRepository.create(test);
 }
 
 export { insertTest };

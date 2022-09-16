@@ -6,9 +6,9 @@ import { TestInsertData } from '../repositories/testRepository';
 async function addTest(req: Request, res: Response) {
   const test: TestInsertData = req.body;
 
-  await testService.insertTest(test);
+  const createdTest = await testService.insertTest(test);
 
-  res.sendStatus(httpStatus.CREATED);
+  res.status(httpStatus.CREATED).send(createdTest);
 }
 
 export { addTest };

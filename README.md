@@ -46,7 +46,19 @@ sending a body in the format:
 
 ```
 {
-  name: strin,
+  name: string,
+  pdfUrl: string,
+  categoryId: number,
+  teacherDisciplineId: number
+}
+```
+
+The server will respond with an object in the format:
+
+```
+{
+  id: number
+  name: string,
   pdfUrl: string,
   categoryId: number,
   teacherDisciplineId: number
