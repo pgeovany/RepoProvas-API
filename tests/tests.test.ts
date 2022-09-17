@@ -22,6 +22,30 @@ describe('POST /tests', () => {
     expect(createdTest).not.toBeNull();
   });
 
+  it('Should return status 404 given an invalid categoryId', async () => {
+    const test = testFactory();
+    const token = await getToken();
+
+    const result = await supertest(app)
+      .post('/tests')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ ...test, categoryId: 0 });
+
+    expect(result.status).toEqual(404);
+  });
+
+  it('Should return status 404 given an invalid teacherDisciplineId', async () => {
+    const test = testFactory();
+    const token = await getToken();
+
+    const result = await supertest(app)
+      .post('/tests')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ ...test, teacherDisciplineId: 0 });
+
+    expect(result.status).toEqual(404);
+  });
+
   it('Should return status 422 given invalid params', async () => {
     const token = await getToken();
 
