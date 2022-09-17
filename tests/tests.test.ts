@@ -52,3 +52,35 @@ describe('POST /tests', () => {
     expect(result.status).toEqual(401);
   });
 });
+
+describe('GET /tests/disciplines', () => {
+  it('Should return status 400 when missing authorization header', async () => {
+    const test = testFactory();
+
+    const result = await supertest(app).get('/tests/disciplines').send(test);
+
+    expect(result.status).toEqual(400);
+  });
+
+  it('Should return status 401 given invalid token', async () => {
+    const test = testFactory();
+
+    const result = await supertest(app)
+      .get('/tests/disciplines')
+      .set('Authorization', 'token')
+      .send(test);
+
+    expect(result.status).toEqual(401);
+  });
+
+  it('Should return status 200 and an array given a valid token', async () => {
+    const token = await getToken();
+
+    const result = await supertest(app)
+      .get('/tests/disciplines')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(result.status).toEqual(200);
+    expect(result.body).toBeInstanceOf(Array);
+  });
+});
