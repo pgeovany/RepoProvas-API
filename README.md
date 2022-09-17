@@ -66,3 +66,87 @@ The server will respond with an object in the format:
 ```
 
 <br>
+
+#### **GET** - Get a list of tests grouped by term and disciplines
+
+Make a get request to: https://repopr0vas.herokuapp.com/tests/disciplines
+sending an **Authorization header** in the Bearer TOKEN format.<br><br>
+The server will respond with an array in the format:
+
+```
+[
+  {
+    number: number,
+    Disciplines: [
+      {
+        id: number,
+        name: string,
+        TeachersDisciplines: [
+          {
+            Tests: [
+              {
+                category: {
+                  id: number,
+                  name: string,
+                  Tests: [
+                    {
+                      id: number,
+                      name: string,
+                      pdfUrl: string,
+                      teacherDiscipline: {
+                        teacher: {
+                          name: string
+                        }
+                      }
+                    },
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+    ]
+  },
+]
+```
+
+<br>
+
+#### **GET** - Get a list of tests grouped teachers
+
+Make a get request to: https://repopr0vas.herokuapp.com/tests/teachers
+sending an **Authorization header** in the Bearer TOKEN format.<br><br>
+The server will respond with an array in the format:
+
+```
+[
+    {
+    name: string,
+    TeachersDisciplines: [
+      {
+        Tests: [
+          {
+            category: {
+              id: number,
+              name: string,
+              Tests: [
+                {
+                  id: number,
+                  name: string,
+                  pdfUrl: string,
+                  teacherDiscipline: {
+                    discipline: {
+                      name: string
+                    }
+                  }
+                },
+              ]
+            }
+          }
+        ]
+      },
+    ]
+  },
+]
+```
