@@ -51,4 +51,46 @@ async function getTestsGroupedByDisciplines() {
   });
 }
 
-export { create, getTestsGroupedByDisciplines };
+async function getTestsGroupedByTeachers() {
+  return await prisma.teachers.findMany({
+    select: {
+      name: true,
+      TeachersDisciplines: {
+        select: {
+          Tests: {
+            distinct: ['categoryId'],
+            select: {
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  Tests: {
+                    select: {
+                      id: true,
+                      name: true,
+                      pdfUrl: true,
+                      teacherDiscipline: {
+                        select: {
+                          discipline: { select: { name: true } },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            orderBy: [
+              {
+                category: {
+                  name: 'desc',
+                },
+              },
+            ],
+          },
+        },
+      },
+    },
+  });
+}
+
+export { create, getTestsGroupedByDisciplines, getTestsGroupedByTeachers };

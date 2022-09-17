@@ -17,4 +17,10 @@ async function getTestsByDisciplines(req: Request, res: Response) {
   res.status(httpStatus.OK).send(tests);
 }
 
-export { addTest, getTestsByDisciplines };
+async function getTestsByTeachers(req: Request, res: Response) {
+  const tests = await testService.getTestsByTeachers();
+
+  res.status(httpStatus.OK).send(tests);
+}
+
+export { addTest, getTestsByDisciplines, getTestsByTeachers };

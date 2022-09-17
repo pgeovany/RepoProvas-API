@@ -15,4 +15,10 @@ async function getTestsByDisciplines() {
   return tests;
 }
 
-export { insertTest, getTestsByDisciplines };
+async function getTestsByTeachers() {
+  const tests = await testRepository.getTestsGroupedByTeachers();
+
+  return tests;
+}
+
+export { insertTest, getTestsByDisciplines, getTestsByTeachers };
