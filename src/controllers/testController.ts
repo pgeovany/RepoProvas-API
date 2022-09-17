@@ -11,4 +11,10 @@ async function addTest(req: Request, res: Response) {
   res.status(httpStatus.CREATED).send(createdTest);
 }
 
-export { addTest };
+async function getTestsByDisciplines(req: Request, res: Response) {
+  const tests = await testService.getTestsByDisciplines();
+
+  res.status(httpStatus.OK).send(tests);
+}
+
+export { addTest, getTestsByDisciplines };

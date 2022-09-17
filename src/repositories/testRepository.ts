@@ -7,4 +7,48 @@ async function create(data: TestInsertData) {
   return await prisma.tests.create({ data });
 }
 
-export { create };
+async function getTestsGroupedByDisciplines() {
+  return await prisma.terms.findMany({
+    select: {
+      number: true,
+      Disciplines: {
+        select: {
+          id: true,
+          name: true,
+          TeachersDisciplines: {
+            select: {
+              teacher: true,
+              Tests: {
+                distinct: ['categoryId'],
+                select: {
+                  category: {
+                    select: {
+                      id: true,
+                      name: true,
+                      Tests: {
+                        select: {
+                          id: true,
+                          name: true,
+                          pdfUrl: true,
+                        },
+                      },
+                    },
+                  },
+                },
+                orderBy: [
+                  {
+                    category: {
+                      name: 'desc',
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}
+
+export { create, getTestsGroupedByDisciplines };

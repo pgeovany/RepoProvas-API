@@ -9,4 +9,10 @@ async function insertTest(test: testRepository.TestInsertData) {
   return await testRepository.create(test);
 }
 
-export { insertTest };
+async function getTestsByDisciplines() {
+  const tests = await testRepository.getTestsGroupedByDisciplines();
+
+  return tests;
+}
+
+export { insertTest, getTestsByDisciplines };
