@@ -17,7 +17,6 @@ async function getTestsGroupedByDisciplines() {
           name: true,
           TeachersDisciplines: {
             select: {
-              teacher: true,
               Tests: {
                 distinct: ['categoryId'],
                 select: {
@@ -30,6 +29,15 @@ async function getTestsGroupedByDisciplines() {
                           id: true,
                           name: true,
                           pdfUrl: true,
+                          teacherDiscipline: {
+                            select: {
+                              teacher: {
+                                select: {
+                                  name: true,
+                                },
+                              },
+                            },
+                          },
                         },
                       },
                     },
