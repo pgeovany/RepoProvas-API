@@ -1,0 +1,112 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "RepoProvas",
+  "dateExported": "2022-09-17T01:50:07.024Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "bf9b382d-1946-4007-9b52-cffe78aee43b",
+      "name": "Authentication",
+      "containerId": "",
+      "created": "2022-09-14T17:05:04.482Z",
+      "sortNum": 10000
+    },
+    {
+      "_id": "db1ed4fe-c00c-46a0-9628-0eb9f6c9faf1",
+      "name": "Tests",
+      "containerId": "",
+      "created": "2022-09-14T20:07:29.100Z",
+      "sortNum": 20000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "dddfa194-16da-4a5a-b960-7bf9a6c7bac9",
+      "colId": "4f7f2b7b-8465-4792-9f64-cc600b0b7e54",
+      "containerId": "bf9b382d-1946-4007-9b52-cffe78aee43b",
+      "name": "Sign-up",
+      "url": "{{URL}}/sign-up",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2022-09-14T17:05:15.081Z",
+      "modified": "2022-09-17T01:47:14.881Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"test@gmail.com\",\n  \"password\": \"Abc@1234\",\n  \"confirmPassword\": \"Abc@1234\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "89e5a269-231a-49af-97e4-1ccc42c34019",
+      "colId": "4f7f2b7b-8465-4792-9f64-cc600b0b7e54",
+      "containerId": "bf9b382d-1946-4007-9b52-cffe78aee43b",
+      "name": "Sign-in",
+      "url": "{{URL}}/sign-in",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2022-09-14T18:57:37.418Z",
+      "modified": "2022-09-17T01:47:37.911Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"test@gmail.com\",\n  \"password\": \"Abc@1234\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "4e971665-cd6d-4093-a898-f7943c4040ca",
+      "colId": "4f7f2b7b-8465-4792-9f64-cc600b0b7e54",
+      "containerId": "db1ed4fe-c00c-46a0-9628-0eb9f6c9faf1",
+      "name": "Add test",
+      "url": "{{URL}}/tests",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2022-09-14T20:07:36.942Z",
+      "modified": "2022-09-17T01:49:22.830Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"P1 2017.1\",\n  \"pdfUrl\": \"https://www.loggly.com/wp-content/uploads/2015/05/Linux-Cheat-Sheet-Sponsored-By-Loggly.pdf\",\n  \"categoryId\": 1,\n  \"teacherDisciplineId\": 3\n}",
+        "form": []
+      },
+      "auth": { "type": "bearer" },
+      "tests": []
+    },
+    {
+      "_id": "e8ffb081-ad67-4411-a619-0728652ce4e2",
+      "colId": "4f7f2b7b-8465-4792-9f64-cc600b0b7e54",
+      "containerId": "db1ed4fe-c00c-46a0-9628-0eb9f6c9faf1",
+      "name": "Get tests grouped by disciplines",
+      "url": "{{URL}}/tests/disciplines",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2022-09-16T00:52:46.296Z",
+      "modified": "2022-09-17T01:49:30.955Z",
+      "headers": [],
+      "params": [],
+      "auth": { "type": "bearer" },
+      "tests": []
+    },
+    {
+      "_id": "3435b36e-dcb0-4e2c-a21a-9251dcdf3df1",
+      "colId": "4f7f2b7b-8465-4792-9f64-cc600b0b7e54",
+      "containerId": "db1ed4fe-c00c-46a0-9628-0eb9f6c9faf1",
+      "name": "Get tests grouped by teachers",
+      "url": "{{URL}}/tests/teachers",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2022-09-17T00:55:58.936Z",
+      "modified": "2022-09-17T01:49:34.440Z",
+      "headers": [],
+      "params": [],
+      "auth": { "type": "bearer" },
+      "tests": []
+    }
+  ]
+}
